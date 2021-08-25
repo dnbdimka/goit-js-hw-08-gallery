@@ -43,18 +43,26 @@ function onImageClick(e) {
     }
     
     refs.lightBox.classList.add('is-open');
-    refs.lightBoxImg.setAttribute('src', `${e.target.dataset.source}`);
-    refs.lightBoxImg.setAttribute('alt', `${e.target.getAttribute('alt')}`);
 
-window.addEventListener('keydown', onLightBoxKeypress);
+    const src = e.target.dataset.source;
+    const alt = e.target.getAttribute('alt');
+    addSrcAlt(src, alt)
+    // refs.lightBoxImg.setAttribute('src', `${e.target.dataset.source}`);
+    // refs.lightBoxImg.setAttribute('alt', `${e.target.getAttribute('alt')}`);
+
+    window.addEventListener('keydown', onLightBoxKeypress);
 
 };
 
 function onLightBoxClick(e) {
     if (e.target === refs.lightBoxBtnClose || e.target === refs.lightBoxOverlay) {
         refs.lightBox.classList.remove('is-open');
-        refs.lightBoxImg.setAttribute('src', '');
-        refs.lightBoxImg.setAttribute('alt', '');
+        const src = '';
+        const alt = '';
+        addSrcAlt(src, alt)
+
+        // refs.lightBoxImg.setAttribute('src', '');
+        // refs.lightBoxImg.setAttribute('alt', '');
     }
 };
 
@@ -64,3 +72,8 @@ function onLightBoxKeypress(e) {
         window.removeEventListener('keydown', onLightBoxKeypress);
     }
 };
+
+const addSrcAlt = (src, alt) => {
+    refs.lightBoxImg.setAttribute('src', `${src}`);
+    refs.lightBoxImg.setAttribute('alt', `${alt}`)
+}
