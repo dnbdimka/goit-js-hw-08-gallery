@@ -43,7 +43,6 @@ function onImageClick(e) {
     }
     
     refs.lightBox.classList.add('is-open');
-    
     refs.lightBoxImg.setAttribute('src', `${e.target.dataset.source}`);
     refs.lightBoxImg.setAttribute('alt', `${e.target.getAttribute('alt')}`);
 
